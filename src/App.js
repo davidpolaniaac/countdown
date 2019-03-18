@@ -7,18 +7,22 @@ class App extends Component {
 
   dates() {
     let dayOfWeek = 5; //friday
-    let date = new Date();
+    let date = new Date(); 
     date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
     return date;
   }
 
 
   render() {
-    const currentDate = new Date();
-    const year = (currentDate.getMonth() === 11 && currentDate.getDate() > 23) ? currentDate.getFullYear() + 1 : currentDate.getFullYear();
+    const currentDate = this.dates();
+    const year = currentDate.getFullYear();
     const month = ((currentDate.getUTCMonth() + 1 ) < 10) ? (`0${currentDate.getUTCMonth() + 1}` ) : (currentDate.getUTCMonth() + 1 ) ; //months from 1-12
     const day = currentDate.getUTCDate() < 10 ? `0${currentDate.getUTCDate()}` : `${currentDate.getUTCDate()}`
-
+    console.log(currentDate);
+    console.log(year);
+    console.log(month);
+    console.log(day);
+      
     return (
       <div className="App">
         <header className="App-header">
